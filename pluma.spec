@@ -5,7 +5,7 @@
 Summary:       Small but powerful text editor for MATE
 Name:          pluma
 Version:       1.6.0
-Release:       1
+Release:       2
 License:       GPLv2+
 Group:         Editors 
 URL:           http://mate-desktop.org
@@ -39,7 +39,8 @@ BuildRequires: python
 Requires:      pyorbit
 # the run-command plugin uses zenity
 Requires:      zenity
-Provides:      %{oname} = %{version}-%{release}
+
+%rename %{oname}
 
 %description
 Pluma is a small but powerful text editor designed expressly
@@ -88,8 +89,6 @@ NOCONFIGURE=1 ./autogen.sh
 %install
 
 %makeinstall_std
-
-find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %{find_lang} %{name} --with-gnome
 
