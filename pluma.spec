@@ -6,8 +6,8 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.8.0
-Release:	2
+Version:	1.8.1
+Release:	1
 License:	GPLv2+
 Group:		Editors 
 Url:		http://mate-desktop.org
@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(pygobject-2.0)
 BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(pygtksourceview-2.0)
+BuildRequires:	pkgconfig(python3)
 %endif
 Requires:	glib2.0-common
 # the run-command plugin uses zenity
@@ -72,7 +73,7 @@ Install this if you want to build plugins that use Pluma's API.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--enable-gvfs-metadata \
 %if %{build_with_python}
 	--enable-python 
