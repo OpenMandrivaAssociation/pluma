@@ -6,8 +6,8 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.8.1
-Release:	2
+Version:	1.14.0
+Release:	1
 License:	GPLv2+
 Group:		Editors 
 Url:		http://mate-desktop.org
@@ -19,9 +19,9 @@ BuildRequires:	mate-common
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(enchant)
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gtk-doc)
-BuildRequires:	pkgconfig(gtksourceview-2.0)
+BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -73,6 +73,7 @@ Install this if you want to build plugins that use Pluma's API.
 %apply_patches
 
 %build
+export PYTHON=python2
 %configure \
 	--enable-gvfs-metadata \
 %if %{build_with_python}
@@ -99,6 +100,8 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.filebrowser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.time.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.spell.gschema.xml
+%{_datadir}/appdata/pluma.appdata.xml
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}/plugin-loaders
 %{_libdir}/%{name}/plugin-loaders/libcloader.so
@@ -125,11 +128,13 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_libdir}/%{name}/plugins/pythonconsole.pluma-plugin
 %{_libdir}/%{name}/plugins/quickopen.pluma-plugin
 %{_libdir}/%{name}/plugins/snippets.pluma-plugin
-%{_libdir}/%{name}/plugins/externaltools/*
-%{_libdir}/%{name}/plugins/pythonconsole/*
-%{_libdir}/%{name}/plugins/quickopen/*
-%{_libdir}/%{name}/plugins/snippets/*
+%{_libdir}/%{name}/plugins/externaltools
+%{_libdir}/%{name}/plugins/pythonconsole
+%{_libdir}/%{name}/plugins/quickopen
+%{_libdir}/%{name}/plugins/snippets
 %endif
+%{_libdir}/%{name}/plugins/libtrailsave.so
+%{_libdir}/%{name}/plugins/trailsave.pluma-plugin
 %{_mandir}/man1/%{name}.1*
 
 %files devel
