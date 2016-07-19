@@ -16,6 +16,7 @@ BuildRequires:	iso-codes
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	mate-common
+BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(enchant)
 BuildRequires:	pkgconfig(glib-2.0)
@@ -77,6 +78,7 @@ Install this if you want to build plugins that use Pluma's API.
 export PYTHON=python2
 %configure \
 	--enable-gvfs-metadata \
+	--with-gtk=3.0 \
 %if %{build_with_python}
 	--enable-python 
 %else
