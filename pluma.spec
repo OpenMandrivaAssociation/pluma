@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(gtksourceview-3.0)
 BuildRequires:	pkgconfig(iso-codes)
 BuildRequires:	pkgconfig(libsoup-2.4)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 %if %{build_with_python}
