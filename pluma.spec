@@ -31,7 +31,7 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(pygobject-2.0)
 BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(pygtksourceview-2.0)
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python2)
 %endif
 Requires:	glib2.0-common
 # the run-command plugin uses zenity
