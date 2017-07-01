@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   pluma-1.14.0.tar.xz: e521a50260b46af94adf43078dc430c0f590a24a
+sources:
+  pluma-1.18.2.tar.xz: aca7de8f06c26f4a0c807aafd3a862494a050647

@@ -1,12 +1,11 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
-%define	_disable_ld_no_undefined 1
-
-%define build_with_python 1
 %define oname mate-text-editor
+
+%bcond_without python
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.14.0
+Version:	1.18.2
 Release:	1
 License:	GPLv2+
 Group:		Editors 
@@ -29,7 +28,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
-%if %{build_with_python}
+%if %{with python}
 BuildRequires:	pkgconfig(pygobject-2.0)
 BuildRequires:	pkgconfig(pygtk-2.0)
 BuildRequires:	pkgconfig(pygtksourceview-2.0)
@@ -75,24 +74,23 @@ Install this if you want to build plugins that use Pluma's API.
 %apply_patches
 
 %build
-export PYTHON=python2
+export PYTHON=%{__python2}
 %configure \
+        --enable-gtk-doc-html     \
 	--enable-gvfs-metadata \
-	--with-gtk=3.0 \
-%if %{build_with_python}
-	--enable-python 
+%if %{with python}
+	--enable-python \
 %else
-	--disable-python
+	--disable-python \
 %endif
-
+	--disable-introspection \
+	%{nil}
 %make
 
 %install
 %makeinstall_std
 
-# remove unneeded converter
-rm -fr %{buildroot}%{_datadir}/MateConf
-
+# locales
 %find_lang %{name} --with-gnome --all-name
 
 %files  -f %{name}.lang
@@ -106,19 +104,19 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.spell.gschema.xml
 %{_datadir}/appdata/pluma.appdata.xml
 %{_datadir}/%{name}
-%dir %{_libdir}/%{name}/plugin-loaders
-%{_libdir}/%{name}/plugin-loaders/libcloader.so
-%{_libdir}/%{name}/plugin-loaders/libpythonloader.so
+#%dir %{_libdir}/%{name}/plugin-loaders
+#%{_libdir}/%{name}/plugin-loaders/libcloader.so
+#%{_libdir}/%{name}/plugin-loaders/libpythonloader.so
 %dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/changecase.pluma-plugin
-%{_libdir}/%{name}/plugins/docinfo.pluma-plugin
-%{_libdir}/%{name}/plugins/filebrowser.pluma-plugin
+%{_libdir}/%{name}/plugins/changecase.plugin
+%{_libdir}/%{name}/plugins/docinfo.plugin
+%{_libdir}/%{name}/plugins/filebrowser.plugin
 %{_libdir}/%{name}/plugins/libtaglist.so
-%{_libdir}/%{name}/plugins/modelines.pluma-plugin
-%{_libdir}/%{name}/plugins/sort.pluma-plugin
-%{_libdir}/%{name}/plugins/spell.pluma-plugin
-%{_libdir}/%{name}/plugins/taglist.pluma-plugin
-%{_libdir}/%{name}/plugins/time.pluma-plugin
+%{_libdir}/%{name}/plugins/modelines.plugin
+%{_libdir}/%{name}/plugins/sort.plugin
+%{_libdir}/%{name}/plugins/spell.plugin
+%{_libdir}/%{name}/plugins/taglist.plugin
+%{_libdir}/%{name}/plugins/time.plugin
 %{_libdir}/%{name}/plugins/libchangecase.so
 %{_libdir}/%{name}/plugins/libdocinfo.so
 %{_libdir}/%{name}/plugins/libfilebrowser.so
@@ -126,23 +124,22 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_libdir}/%{name}/plugins/libsort.so
 %{_libdir}/%{name}/plugins/libspell.so
 %{_libdir}/%{name}/plugins/libtime.so
-%if %{build_with_python}
-%{_libdir}/%{name}/plugins/externaltools.pluma-plugin
-%{_libdir}/%{name}/plugins/pythonconsole.pluma-plugin
-%{_libdir}/%{name}/plugins/quickopen.pluma-plugin
-%{_libdir}/%{name}/plugins/snippets.pluma-plugin
+%if %{with python}
+%{_libdir}/%{name}/plugins/externaltools.plugin
+%{_libdir}/%{name}/plugins/pythonconsole.plugin
+%{_libdir}/%{name}/plugins/quickopen.plugin
+%{_libdir}/%{name}/plugins/snippets.plugin
 %{_libdir}/%{name}/plugins/externaltools
 %{_libdir}/%{name}/plugins/pythonconsole
 %{_libdir}/%{name}/plugins/quickopen
 %{_libdir}/%{name}/plugins/snippets
 %endif
 %{_libdir}/%{name}/plugins/libtrailsave.so
-%{_libdir}/%{name}/plugins/trailsave.pluma-plugin
+%{_libdir}/%{name}/plugins/trailsave.plugin
 %{_mandir}/man1/%{name}.1*
 
 %files devel
 %{_includedir}/pluma
 %{_libdir}/pkgconfig/pluma.pc
 %_datadir/gtk-doc/html/*
-
 
