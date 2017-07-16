@@ -55,8 +55,8 @@ Requires:	zenity
 %if %{with python}
 Requires:	pygtk2
 Requires:	pygobject2
-Requires:	pygtksourceview
 Requires:	pyorbit
+Requires:	python2-gtksourceview
 %endif
 
 %rename		%{oname}
