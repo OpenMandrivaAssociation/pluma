@@ -141,6 +141,7 @@ API.
 %doc %{_datadir}/gtk-doc/html/%{name}
 %{_includedir}/pluma
 %{_libdir}/pkgconfig/pluma.pc
+%{_datadir}/gir-1.0/Pluma-%{gi_major}.gir
 
 #---------------------------------------------------------------------------
 
