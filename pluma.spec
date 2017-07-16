@@ -138,7 +138,7 @@ This package contains includes files for developing plugins based on Pluma's
 API.
 
 %files devel
-%doc/gtk-doc/html/*
+%doc %{_datadir}/gtk-doc/html/%{name}
 %{_includedir}/pluma
 %{_libdir}/pkgconfig/pluma.pc
 
