@@ -131,7 +131,6 @@ average text editor (plugins being the most notable of these).
 Group:		Development/C
 Summary:	Headers for writing Pluma plugins
 Provides:	%{name}-devel = %{version}-%{release}
-%rename %{oname}-devel
 
 %description devel
 This package contains includes files for developing plugins based on Pluma's
@@ -148,7 +147,7 @@ API.
 %package -n %{girname}
 Summary:	GObject Introspection interface library for %{name}
 Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
+#Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{girname}
 This package contains GObject Introspection interface library for %{name}.
