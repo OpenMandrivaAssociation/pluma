@@ -54,8 +54,8 @@ Requires:	typelib(PeasGtk)
 Requires:	zenity
 %if %{with python}
 Requires:	pygtk2
-Requires:	pygobject2
 Requires:	pyorbit
+Requires:	python-gobject2
 Requires:	python2-gtksourceview
 %endif
 
