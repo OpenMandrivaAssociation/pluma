@@ -92,7 +92,7 @@ average text editor (plugins being the most notable of these).
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.filebrowser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.time.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.spell.gschema.xml
-%{_datadir}/appdata/pluma.appdata.xml
+%{_datadir}/metainfo/pluma.appdata.xml
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/changecase.plugin
