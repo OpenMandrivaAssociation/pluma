@@ -159,7 +159,7 @@ This package contains GObject Introspection interface library for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 export PYTHON=%{__python2}
