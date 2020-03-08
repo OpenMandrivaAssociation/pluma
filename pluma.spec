@@ -41,10 +41,8 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	yelp-tools
 %if %{with python}
-BuildRequires:	pkgconfig(pygobject-2.0)
-BuildRequires:	pkgconfig(pygtk-2.0)
-BuildRequires:	pkgconfig(pygtksourceview-2.0)
-BuildRequires:	pkgconfig(python2)
+BuildRequires: pkgconfig(pygobject-3.0)
+BuildRequires:	pkgconfig(python)
 %endif
 
 Requires:	caja-schemas
@@ -57,7 +55,7 @@ Requires:	zenity
 Requires:	pygtk2
 Requires:	pyorbit
 Requires:	python-gobject2
-Requires:	python2-gtksourceview
+Requires:	python-gtksourceview
 %endif
 
 %rename		%{oname}
@@ -94,6 +92,7 @@ average text editor (plugins being the most notable of these).
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.time.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.spell.gschema.xml
 %{_datadir}/metainfo/pluma.appdata.xml
+%{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.pythonconsole.gschema.xml
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/changecase.plugin
