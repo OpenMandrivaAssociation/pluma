@@ -8,13 +8,14 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.22.2
+Version:	1.24.0
 Release:	1
 License:	GPLv2+
 Group:		Editors
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	itstool
@@ -173,10 +174,10 @@ export PYTHON=%{__python2}
 	--disable-python \
 %endif
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # locales
 %find_lang %{name} --with-gnome --all-name
