@@ -52,10 +52,7 @@ Requires:	typelib(Peas)
 Requires:	typelib(PeasGtk)
 Requires:	zenity
 %if %{with python}
-Requires:	pygtk2
-Requires:	pyorbit
-Requires:	python-gobject2
-Requires:	python-gtksourceview
+Requires:	python
 %endif
 
 %rename		%{oname}
@@ -162,7 +159,7 @@ This package contains GObject Introspection interface library for %{name}.
 %autopatch -p1
 
 %build
-export PYTHON=%{__python2}
+export PYTHON=%{__python}
 %configure \
 	--disable-schemas-compile \
         --enable-gtk-doc-html \
