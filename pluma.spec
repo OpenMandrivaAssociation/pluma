@@ -8,7 +8,7 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.24.0
+Version:	1.24.1
 Release:	1
 License:	GPLv2+
 Group:		Editors
