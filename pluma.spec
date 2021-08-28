@@ -80,7 +80,7 @@ Pluma supports most standard editing features, plus several not found in your
 average text editor (plugins being the most notable of these).
 
 %files  -f %{name}.lang
-%doc README COPYING AUTHORS
+%doc README* COPYING AUTHORS
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
@@ -92,7 +92,7 @@ average text editor (plugins being the most notable of these).
 %{_datadir}/glib-2.0/schemas/org.mate.pluma.plugins.pythonconsole.gschema.xml
 %{_datadir}/%{name}
 %dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/changecase.plugin
+#{_libdir}/%{name}/plugins/changecase.plugin
 %{_libdir}/%{name}/plugins/docinfo.plugin
 %{_libdir}/%{name}/plugins/filebrowser.plugin
 %{_libdir}/%{name}/plugins/libtaglist.so
@@ -101,7 +101,7 @@ average text editor (plugins being the most notable of these).
 %{_libdir}/%{name}/plugins/spell.plugin
 %{_libdir}/%{name}/plugins/taglist.plugin
 %{_libdir}/%{name}/plugins/time.plugin
-%{_libdir}/%{name}/plugins/libchangecase.so
+#{_libdir}/%{name}/plugins/libchangecase.so
 %{_libdir}/%{name}/plugins/libdocinfo.so
 %{_libdir}/%{name}/plugins/libfilebrowser.so
 %{_libdir}/%{name}/plugins/libmodelines.so
