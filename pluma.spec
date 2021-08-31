@@ -14,6 +14,7 @@ License:	GPLv2+
 Group:		Editors
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		fix-bin-sh.patch
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
