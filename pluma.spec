@@ -8,8 +8,8 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.26.0
-Release:	2
+Version:	1.26.1
+Release:	1
 License:	GPLv2+
 Group:		Editors
 Url:		http://mate-desktop.org
