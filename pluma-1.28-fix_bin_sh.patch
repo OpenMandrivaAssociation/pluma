@@ -1,0 +1,9 @@
+--- a/data/pluma-bugreport.sh.in
++++ b/data/pluma-bugreport.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/sh
++#!/bin/sh
+ 
+ PKG_CONFIG_MODULES="glib-2.0 gtk+-3.0 gtksourceview-4 enchant iso-codes"
+ 
+

@@ -1,20 +1,22 @@
-%define url_ver %(echo %{version}|cut -d. -f1,2)
-%define oname mate-text-editor
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define gi_major 1.0
-%define girname  %mklibname %{name}-gir %{gi_major}
+%define girname %mklibname %{name}-gir %{gi_major}
+
+# Workadound for plugins
+%define _disable_ld_no_undefined 1
 
 %bcond_without python
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.26.1
+Version:	1.28.0
 Release:	1
 License:	GPLv2+
 Group:		Editors
-Url:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		fix-bin-sh.patch
+Url:		https://mate-desktop.org
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
+Patch0:		pluma-1.28-fix_bin_sh.patch
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
@@ -42,7 +44,7 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	yelp-tools
 %if %{with python}
-BuildRequires: pkgconfig(pygobject-3.0)
+BuildRequires:	pkgconfig(pygobject-3.0)
 BuildRequires:	pkgconfig(python)
 %endif
 
@@ -56,7 +58,7 @@ Requires:	zenity
 Requires:	python
 %endif
 
-%rename		%{oname}
+%rename		mate-text-editor
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -156,21 +158,17 @@ This package contains GObject Introspection interface library for %{name}.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-export PYTHON=%{__python}
+#NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-schemas-compile \
-        --enable-gtk-doc-html \
-        --enable-gvfs-metadata \
-%if %{with python}
-	--enable-python \
-%else
-	--disable-python \
-%endif
+	--enable-gtk-doc-html \
+	--enable-gvfs-metadata \
+	--%{?with_python:en}%{!?with_python:dis}able-python \
 	%{nil}
+sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 %make_build
 
 %install
