@@ -20,7 +20,7 @@ Patch0:		pluma-1.28-fix_bin_sh.patch
 
 BuildRequires:	automake
 BuildRequires:	libtool-base
-BuildRequires:	libtool
+BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
@@ -171,7 +171,7 @@ This package contains GObject Introspection interface library for %{name}.
 	--enable-gvfs-metadata \
 	--%{?with_python:en}%{!?with_python:dis}able-python \
 	%{nil}
-sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 %make_build
 
 %install
