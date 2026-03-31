@@ -10,12 +10,13 @@
 
 Summary:	Small but powerful text editor for MATE
 Name:		pluma
-Version:	1.28.0
+Version:	1.28.1
 Release:	1
 License:	GPLv2+
 Group:		Editors
 Url:		https://mate-desktop.org
-Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
+#Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
+Source0: https://github.com/mate-desktop/pluma/releases/download/v%{version}/pluma-%{version}.tar.xz
 Patch0:		pluma-1.28-fix_bin_sh.patch
 
 BuildRequires:	automake
@@ -56,6 +57,8 @@ Requires:	glib2.0-common
 Requires:	mate-desktop-schemas
 Requires:	typelib(Peas)
 Requires:	typelib(PeasGtk)
+# Make sure that peas git 1.0 is pulled. typelib(Peas) exist in both API 1.0 and 2
+Requires:	%{_lib}peas-gir1.0
 Requires:	zenity
 %if %{with python}
 Requires:	python
