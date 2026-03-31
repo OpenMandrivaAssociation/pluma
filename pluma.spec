@@ -20,7 +20,7 @@ Patch0:		pluma-1.28-fix_bin_sh.patch
 
 BuildRequires:	automake
 BuildRequires:	libtool-base
-BuildRequires:	slibtool
+BuildRequires:	libtool
 BuildRequires:	make
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
